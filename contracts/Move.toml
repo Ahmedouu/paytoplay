@@ -1,0 +1,10 @@
+[package]
+name = "streamer"
+version = "1.0.0"
+
+[addresses]
+the_streamer = "_"
+
+
+[dependencies]
+AptosTokenObjects = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-token-objects/", rev = "aptos-cli-v2.1.0" }
