@@ -1,7 +1,7 @@
 # seamlessPayments
 
 
-With Aptos payments, you can send and received payments in real-time. Utilize your potential to the fullest extent by having access to your earnings as soon as you earn them.
+With Aptos payments, you can send and receive payments in real-time. Utilize your potential to the fullest extent by having access to your earnings as soon as you earn them.
 Claiming APT: As soon as a stream begins, the recipient has the freedom to claim the amount that has been streamed up to that point at any time they choose.
 
 Viewing stream rate: Users involved in sending or receiving streamed payments have the ability to monitor their current stream rate, which reflects their total stream rate, taking into account all incoming and outgoing payments.
@@ -13,6 +13,7 @@ Viewing stream history: Users have the option to look back at the history of eac
 
 # First Steps 
 
+The .env includes a deployed contract address on the aptos testnetwork so you can skip this step to the next highlighted section if you want,  but if you would like to deploy it yourself and get familiar with move on aptos, here you go:  
 You need the aptos cli, you can use the following to install the cli:
 
 `https://aptos.dev/tools/aptos-cli/install-cli/`
@@ -128,4 +129,4 @@ In this contract, the admin/module deployer is used to store all of the module's
 3. Run yarn dev or npm run dev to start the development server
 4. Open http://localhost:3000 with your browser to see the result
 
-The DAPP will walk you through how to use it, but the main thing to remember here is that you need a wallet (Martian or Petra) and at least two different accounts, create a payment stream between two accounts, accept payments, cancel payments, claim payments, view your payment history, keep watching your stream rate and enjoy :)
+The DAPP will walk you through how to use it, but the main thing to remember here is that you need a wallet (Martian or Petra) and at least two different accounts, create a payment stream between two accounts, accept payments, cancel payments, claim payments, view your payment history, keep watching your payement stream rate and enjoy :)
