@@ -1,5 +1,7 @@
 # seamlessPayments
 
+
+With Aptos payments, you can send and received payments in real-time. Utilize your potential to the fullest extent by having access to your earnings as soon as you earn them.
 Claiming APT: As soon as a stream begins, the recipient has the freedom to claim the amount that has been streamed up to that point at any time they choose.
 
 Viewing stream rate: Users involved in sending or receiving streamed payments have the ability to monitor their current stream rate, which reflects their total stream rate, taking into account all incoming and outgoing payments.
@@ -103,7 +105,7 @@ Now we are sure our module was deployed to a valid testnet, but what if I we wan
 you should revisit if the code is 400 or anything else other than 200.
 
 
-now that we are done with our backend let's make sure all the values we have from before are reflected in the frontend navigate to /app/next.config.js:
+now that we are done with our backend let's make sure all the values we have from before are reflected in the dapp navigate to /app/next.config.js:
 
 and change the address to the same address we used with our aptos cli to publish to the test network:
 ```
@@ -117,3 +119,13 @@ const nextConfig = {
 ```
 
 In this contract, the admin/module deployer is used to store all of the module's resources instead of a resource account. Because of this the resource account constant is the same as the module address!
+
+
+# Deploying the dapp locally:
+
+1. Navigate to the app directory
+2. Run yarn install or npm install to install dependencies
+3. Run yarn dev or npm run dev to start the development server
+4. Open http://localhost:3000 with your browser to see the result
+
+The DAPP will walk you through how to use it, but the main thing to remember here is that you need a wallet (Martian or Petra) and at least two different accounts, create payments, receive payements and enjoy :)

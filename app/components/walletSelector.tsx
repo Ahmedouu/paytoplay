@@ -183,7 +183,7 @@ export default function WalletSelector(props: { isTxnInProgress?: boolean }) {
       {!connected && !isLoading && (
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-green-800 hover:bg-green-700 text-white font-matter font-medium px-3 space-x-2">
+            <Button className="bg-purple-800 hover:bg-green-700 text-white font-matter font-medium px-3 space-x-2">
               <p>Connect Wallet </p>
             </Button>
           </DialogTrigger>

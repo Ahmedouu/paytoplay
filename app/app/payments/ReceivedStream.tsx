@@ -90,16 +90,12 @@ export default function ReceivedStream(props: {
   // event state for the history
   const [events, setEvents] = useState<Event[]>([]);
 
-  /* 
-    Refreshes the progress bar every second
-  */
+ 
   setInterval(() => {
     setTimeNow(Date.now());
   }, 1000);
 
-  /* 
-    calculates the amount of APT to claim based on the time elapsed
-  */
+ 
   const getAmountToClaim = () => {
     let timeElapsedSeconds = timeNow / 1000 - props.startTimestampSeconds;
     let timeElapsedFraction = timeElapsedSeconds / props.durationSeconds;
@@ -107,17 +103,11 @@ export default function ReceivedStream(props: {
     return amountToClaim;
   };
 
-  /* 
-    Claim APT from the stream
-  */
+  
   const claimApt = async () => {
-    /* 
-      TODO: Set the isTxnInProgress prop to true
-    */
+   
     props.setTxn(true);
-    /* 
-      TODO: Create the payload for the claim_stream transaction
-    */
+ 
       const payload = {
         type: "entry_function_payload",
         function: `${process.env.MODULE_ADDRESS}::${process.env.MODULE_NAME}::claim_stream`,
@@ -126,27 +116,7 @@ export default function ReceivedStream(props: {
           props.senderAddress,
         ],
       };
-    /* 
-      TODO: In a try/catch block, sign and submit the transaction using the signAndSubmitTransaction
-            function provided by the wallet adapter. Use the payload created above.
-      
-      HINT: 
-        - In case of an error, set the isTxnInProgress prop to false and return.
-        - In case of success, show a toast notification with a link to the transaction on the explorer.
-
-      -- toast -- 
-      toast({
-        title: "APT claimed!",
-        action: (
-          <a
-            href={`PLACEHOLDER: Input the link to the transaction on the explorer here`}
-            target="_blank"
-          >
-            <ToastAction altText="View transaction">View txn</ToastAction>
-          </a>
-        ),
-      });
-    */
+    
       try {
         const txn = await signAndSubmitTransaction(payload);
         await sleep(parseInt(process.env.TRANSACTION_DELAY_MILLISECONDS || '0'));
@@ -170,23 +140,15 @@ export default function ReceivedStream(props: {
         props.setTxn(false);
         return;}
 
-    /* 
-      TODO: Set the isTxnInProgress prop to false
-    */
+  
      props.setTxn(false)
   };
 
-  /* 
-    Accept the stream
-  */
+
   const acceptStream = async () => {
-    /* 
-      TODO: Set the isTxnInProgress prop to true
-    */
+   
     props.setTxn(true);
-    /* 
-      TODO: Create the payload for the accept_stream transaction
-    */
+   
       const payload = {
         type: "entry_function_payload",
         function: `${process.env.MODULE_ADDRESS}::${process.env.MODULE_NAME}::accept_stream`,
@@ -195,27 +157,7 @@ export default function ReceivedStream(props: {
           props.senderAddress,
         ],
       };
-    /* 
-      TODO: In a try/catch block, sign and submit the transaction using the signAndSubmitTransaction
-            function provided by the wallet adapter. Use the payload created above.
-      
-      HINT: 
-        - In case of an error, set the isTxnInProgress prop to false and return.
-        - In case of success, show a toast notification with a link to the transaction on the explorer.
-
-      -- toast --
-      toast({
-        title: "Stream accepted!",
-        action: (
-          <a
-            href={`PLACEHOLDER: Input the link to the transaction on the explorer here`}
-            target="_blank"
-          >
-            <ToastAction altText="View transaction">View txn</ToastAction>
-          </a>
-        ),
-      });
-    */
+    
       try {
         const txn = await signAndSubmitTransaction(payload);
         await sleep(parseInt(process.env.TRANSACTION_DELAY_MILLISECONDS || '0'));
@@ -235,30 +177,20 @@ export default function ReceivedStream(props: {
         console.error(error);
         props.setTxn(false);
       }
-    /* 
-      TODO: Set the isTxnInProgress prop to false
-    */
+  
       props.setTxn(false)
   };
 
-  /* 
-    Reject the stream
-  */
+  
   const rejectStream = async () => {
-    /* 
-      TODO: Return if the account is not defined
-    */
+   
       if (!account){
         return;
       }
 
-    /* 
-      TODO: Set the isTxnInProgress prop to true
-    */
+   
       props.setTxn(true)
-    /* 
-      TODO: Create the payload for the cancel_stream transaction
-    */
+   
       const payload  = {
         type: "entry_function_payload",
         function: `${process.env.MODULE_ADDRESS}::${process.env.MODULE_NAME}::cancel_stream`,
@@ -268,27 +200,7 @@ export default function ReceivedStream(props: {
           account.address
         ],
       };
-    /* 
-      TODO: In a try/catch block, sign and submit the transaction using the signAndSubmitTransaction
-            function provided by the wallet adapter. Use the payload created above.
-      
-      HINT: 
-        - In case of an error, set the isTxnInProgress prop to false and return.
-        - In case of success, show a toast notification with a link to the transaction on the explorer.
-
-      -- toast --
-      toast({
-        title: "Stream rejected",
-        action: (
-          <a
-            href={`PLACEHOLDER: Input the link to the transaction on the explorer here`}
-            target="_blank"
-          >
-            <ToastAction altText="View transaction">View txn</ToastAction>
-          </a>
-        ),
-      });
-    */
+    
       try {
         const txn = await signAndSubmitTransaction(payload);
         await sleep(parseInt(process.env.TRANSACTION_DELAY_MILLISECONDS || '0'));
@@ -310,20 +222,13 @@ export default function ReceivedStream(props: {
         // In case of an error, set the isTxnInProgress prop to false and return
         props.setTxn(false);
         return;}
-    /* 
-      TODO: Set the isTxnInProgress prop to false
-    */
+    
         props.setTxn(false);
   };
 
-  /* 
-    Fetches the event list from the event store
-  */
+ 
   const getEventList = async (event_store_name: string): Promise<[]> => {
-    /* 
-      TODO: Fetch the event of the event_store_name from the event store and return the result in 
-            a promise. 
-    */
+
     
             const response = await fetch(
               `https://fullnode.testnet.aptoslabs.com/v1/accounts/${process.env.RESOURCE_ACCOUNT_ADDRESS}/events/${process.env.MODULE_ADDRESS}::${process.env.MODULE_NAME}::ModuleEventStore/${event_store_name}`,
@@ -331,10 +236,7 @@ export default function ReceivedStream(props: {
                 method: 'GET'
               }
             );
-            /* limit or no limit some old stream (events) won't be be returned by the API request, had an issue with stream with an id of 10xx, 
-               could not find a limit that retunred streams a stream id less than 11xx. 
-            
-            */
+           
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -347,13 +249,8 @@ export default function ReceivedStream(props: {
 
   };
 
-  /* 
-    Retrieves the stream events from the event store and sets the events state
-  */
+ 
   const getStreamEvents = async () => {
-    /* 
-      TODO: Use the getEventList function to fetch all the events from the event store. 
-    */
   
       const create_events = await getEventList("stream_create_events");
       const accept_events = await getEventList("stream_accept_events");
@@ -380,15 +277,7 @@ export default function ReceivedStream(props: {
         };
       };
       
-    /* 
-      TODO: Set the events state with events for the specific stream only. Parse the event data to match the 
-            Event type above. 
-
-      HINT: 
-        - Use the streamId prop to filter the events
-        - Use the event.type to determine the type of the event to properly parse the event data
-        - Remember to convert units when necessary
-    */
+   
         const all_events: RawEvent[] = [...create_events, ...accept_events, ...claim_events, ...close_events];
       
         const stream_events = all_events.filter(event => {
@@ -399,8 +288,7 @@ export default function ReceivedStream(props: {
           return isMatch;
         });
 
-        /** Some events refuse to show up in the payment history, my guess is that it has to do with when the event was created, it's worth noting that only some of them show up in the vercel app as well.
-          **/
+       
         
         const parsed_events: Event[] = stream_events.map(event => {
           let eventType: Event['type'] = 'unknown';
@@ -472,34 +360,7 @@ export default function ReceivedStream(props: {
                   useEasing={false}
                 />
               )
-              /* 
-                TODO: Display the different amount based on the stream status
-
-                HINT: 
-                  - Use the getAmountToClaim function and the amountAptFloat prop to determine if the
-                    stream is completed
-                  - Use the startTimestampSeconds prop to determine if the stream is accepted yet
-                  - if the stream is not accepted yet, display the static total amount 
-                  - if the stream is completed, display the static total amount
-                  - if the stream is active (accepted, but not completed), display the count up 
-                    animation
-              
-                -- count up animation --
-                <CountUp
-                  start={getAmountToClaim()}
-                  end={props.amountAptFloat}
-                  duration={props.durationSeconds}
-                  separator=","
-                  decimals={8}
-                  decimal="."
-                  prefix=""
-                  suffix=""
-                  useEasing={false}
-                />
-
-                -- static amount --
-                <p>{props.amountAptFloat}</p>
-              */
+             
               
             }
 
@@ -513,22 +374,7 @@ export default function ReceivedStream(props: {
                   </div>
                 </div>
               )
-              /* 
-                TODO: Show the reject button only if the stream is not completed 
-
-                HINT: 
-                - Use the getAmountToClaim function and the amountAptFloat prop to determine if the 
-                  stream is completed
-
-                -- reject button --
-                <div className="w-full flex items-center justify-end absolute top-4 right-4">
-                  <div className="bg-neutral-200 text-neutral-100 p-1.5 rounded-md hover:text-red-400 hover:cursor-pointer hover:bg-neutral-100 hover:bg-opacity-25">
-                    <p onClick={rejectStream}>
-                      <Cross2Icon />
-                    </p>
-                  </div>
-                </div>  
-              */
+              
             }
           </div>
 
@@ -541,31 +387,10 @@ export default function ReceivedStream(props: {
               ( <Progress
                 value={(getAmountToClaim() / props.amountAptFloat) * 100}
                 max={100}
-                className="w-full bg-green-500 h-3 rounded"
+                className="w-full bg-purple-500 h-3 rounded"
               />)
 
-            /* 
-              TODO: Show the progress bar based on the stream status
-
-              HINT: 
-                - if the stream is not accepted yet, show a progress bar with 0 value
-                - if the stream is completed, show a progress bar with 100 value
-                - if the stream is active (accepted, but not completed), show a progress bar with the 
-                  percentage of the amount claimed
-
-              -- progress bar: 0 value --
-              <Progress value={0} max={100} className="w-full" />
-
-              -- progress bar: 100 value --
-              <Progress value={100} max={100} className="w-full" />
-
-              -- progress bar: percentage value --
-              <Progress
-                value={(getAmountToClaim() / props.amountAptFloat) * 100}
-                max={100}
-                className="w-full bg-green-500 h-3 rounded"
-              />
-              */
+           
           }
 
           <div className="flex flex-row items-center justify-between w-full">
@@ -613,31 +438,7 @@ export default function ReceivedStream(props: {
                           </TableCell>
                         </TableRow>
                       )
-                      /* 
-                        TODO: Show a skeleton row if the events array is empty
-
-                        HINT: 
-                          - Use the events array to determine if the events are empty
-
-                        -- skeleton row --
-                        <TableRow>
-                          <TableCell className="items-center">
-                            <div className="flex flex-row justify-center items-center w-full">
-                              <Skeleton className="h-4 w-28" />
-                            </div>
-                          </TableCell>
-                          <TableCell className="items-center">
-                            <div className="flex flex-row justify-center items-center w-full">
-                              <Skeleton className="h-4 w-20" />
-                            </div>
-                          </TableCell>
-                          <TableCell className="items-center">
-                            <div className="flex flex-row justify-center items-center w-full">
-                              <Skeleton className="h-4 w-32" />
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      */
+                     
                     }
                     {
                       events.map((event) => (
@@ -675,64 +476,7 @@ export default function ReceivedStream(props: {
                           </TableCell>
                         </TableRow>
                       ))
-                      /* 
-                        TODO: Display each event in the events array with the following format:
                       
-                        -- table row -- 
-                        <TableRow key={event.timestamp}>
-                          <TableCell className="text-center">
-                            TODO: Display the event type based on the event.type
-
-                            HINT: 
-                              - Use the event.type to determine the type of the event
-                              - For each event type, display the following text:
-                                - stream_created: 
-                                  <>
-                                    <span className="font-mono">
-                                      Stream created
-                                    </span>
-                                  </>
-                                - stream_accepted: 
-                                  <>
-                                    <span className="font-mono">
-                                      Stream accepted
-                                    </span>
-                                  </>
-                                - stream_claimed: APT claimed
-                                - stream_cancelled: Stream canceled
-                          </TableCell>
-                          <TableCell className="text-center">
-                            PLACEHOLDER: Display the event timestamp in a readable format
-                          </TableCell>
-                          <TableCell className="text-center">
-                            TODO: Display the event data based on the event.type
-
-                            HINT: 
-                              - Use the event.type to determine the type of the event
-                              - For each event type, display the following text:
-                                - stream_created: 
-                                  <>
-                                    <span className="font-mono">
-                                      {event.data.amount} APT streaming
-                                    </span>
-                                  </>
-                                - stream_accepted: 
-                                  <>
-                                    <span className="font-mono">No data</span>
-                                  </>
-                                - stream_claimed: 
-                                  <>
-                                    <span className="font-mono">APT claimed</span>
-                                  </>
-                                - stream_cancelled: 
-                                  <>
-                                  <span className="font-mono">
-                                    Stream canceled
-                                  </span>
-                                </>
-                          </TableCell>
-                        </TableRow>
-                      */
                     }
                   </TableBody>
                 </Table>
@@ -765,25 +509,7 @@ export default function ReceivedStream(props: {
                             </ToastAction>
                           </a>
                         ),});
-                      /*
-                        TODO: Copy the sender address to the clipboard and show a toast notification
-                        with a link to the sender account on the explorer
-
-                        -- toast --
-                        toast({
-                          description: "Address copied to clipboard",
-                          action: (
-                            <a
-                              href={`PLACEHOLDER: Input the link to the sender account on the explorer here`}
-                              target="_blank"
-                            >
-                              <ToastAction altText="View account on explorer">
-                                View on explorer
-                              </ToastAction>
-                            </a>
-                          ),
-                        });
-                      */
+                     
                     }}
                   >
                     <p className="">
@@ -813,19 +539,7 @@ export default function ReceivedStream(props: {
                 </p>
               </div>
             ): null
-            /* 
-              TODO: Display the end time if the stream has been accepted
-
-              -- end time --
-              <div className="w-full flex flex-row gap-3 items-center justify-between">
-                <p className="text-neutral-100 text-sm">End:</p>
-                <p className="text-end text-sm">
-                  {new Date(
-                    (props.startTimestampSeconds + props.durationSeconds) * 1000
-                  ).toLocaleString()}
-                </p>
-              </div>
-            */
+           
           }
           {
             props.startTimestampSeconds === 0 ? (
@@ -837,17 +551,7 @@ export default function ReceivedStream(props: {
                 </span>
               </div>
             ): null
-            /* 
-              TODO: Display the duration if the stream has not been accepted yet
-
-              -- duration --
-              <div className="w-full flex flex-row items-center justify-between">
-                <p className="text-neutral-100 text-sm">Duration:</p>
-                <span className="font-matter">
-                  {parseDurationShort(props.durationSeconds * 1000)}
-                </span>
-              </div>
-            */
+          
           }
         </div>
       </CardContent>
@@ -858,7 +562,7 @@ export default function ReceivedStream(props: {
              (!(props.startTimestampSeconds === 0) && !(props.startTimestampSeconds + props.durationSeconds < Date.now()/1000)) ? (
       
               <Button
-                className="grow bg-green-800 hover:bg-green-700 text-white"
+                className="grow bg-purple-800 hover:bg-green-700 text-white"
                 onClick={() => {claimApt()}}
               >
                 Claim
@@ -867,40 +571,21 @@ export default function ReceivedStream(props: {
             ): props.startTimestampSeconds === 0 ? (
       
               <Button
-                className="grow bg-green-800 hover:bg-green-700 text-white"
+                className="grow bg-purple-800 hover:bg-green-700 text-white"
                 onClick={() => {acceptStream()}}
               >
                 Accept
               </Button>
             ): getAmountToClaim() >= props.amountAptFloat ? (
               <Button
-                className="grow bg-green-800 hover:bg-green-700 text-white"
+                className="grow bg-purple-800 hover:bg-green-700 text-white"
                 onClick={() => {claimApt()}}
               >
                 Claim
               </Button>
             ):null
             
-            /* 
-              TODO: Display the claim button if the stream is active (accepted, but not completed) and 
-              the accept button if the stream is not accepted yet.
-
-              -- claim button --
-              <Button
-                className="grow bg-green-800 hover:bg-green-700 text-white"
-                onClick={() => {console.log("PLACEHOLDER: claim apt here")}}
-              >
-                Claim
-              </Button>
-
-              -- accept button --
-              <Button
-                className="grow bg-green-800 hover:bg-green-700 text-white"
-                onClick={() => {console.log("PLACEHOLDER: accept stream here")}
-              >
-                Accept
-              </Button>
-            */
+           
           }
           {
             props.startTimestampSeconds === 0 ? (
@@ -912,18 +597,7 @@ export default function ReceivedStream(props: {
                 Reject
               </Button>
             ): null
-            /* 
-              TODO: Display the reject button if the stream is active (accepted, but not completed) and
-              the accept button if the stream is not accepted yet.
-            
-              -- reject button --
-              <Button
-                className="grow bg-red-800 hover:bg-red-700 text-white font-matter"
-                onClick={() => {console.log("PLACEHOLDER: reject stream here")}}
-              >
-                Reject
-              </Button>
-            */ 
+           
           }
         </div>
       </CardFooter>

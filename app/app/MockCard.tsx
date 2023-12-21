@@ -47,7 +47,7 @@ export default function MockCard () {
           <Progress
             value={progress}
             max={100}
-            className="w-full bg-green-500 h-3 rounded"
+            className="w-full bg-purple-500 h-3 rounded"
           />
 
           <div className="flex flex-row items-center justify-between w-full">
@@ -88,7 +88,7 @@ export default function MockCard () {
       <CardFooter>
         <div className="flex flex-row justify-between w-full gap-4 p-4">
           <Button
-            className="grow bg-green-800 hover:bg-green-700 text-white"
+            className="grow bg-purple-800 hover:bg-green-700 text-white"
           >
             Claim
           </Button>

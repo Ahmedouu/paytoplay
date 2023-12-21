@@ -72,66 +72,9 @@ export default function StreamCreator(props: {
   // toast state
   const { toast } = useToast();
 
-  /* 
-    Creates a stream using the address, amount, and date state variables. This function is called
-    when the "Start Stream" button is clicked.
-  */
+ 
   const startStream = async () => {
-    /* 
-      TODO #1: Validate the address, amount, and date are all defined before continuing. Return early 
-            if any of the variables are undefined.
-    */
-
-    /* 
-      TODO #2: Return early if the amount is not a number or is less than 0.
-    */
-
-    /* 
-      TODO #3: Set the isTxnInProgress prop to true
-    */
-
-    /* 
-      TODO #4: Reset the address, amount, and date state variables
-    */
-
-    /* 
-      TODO #5: Create the payload for the create_stream transaction
-
-      HINT: 
-        - Note that the amount is in floating point format, but the transaction expects an integer 
-          with 8 decimal places.
-        - The date is in milliseconds, but the transaction expects seconds.
-    */
-
-    /* 
-      TODO #6: In a try/catch block, sign and submit the transaction using the signAndSubmitTransaction
-            function provided by the wallet adapter. Use the payload created above.
-     
-      HINT: 
-        - In case of an error, set the isTxnInProgress prop to false and return.
-        - If the transaction is successful, show a toast notification with the transaction hash and
-
-      -- toast -- 
-      toast({
-        title: "Stream created!",
-        description: `Stream created: to ${`${address.slice(
-          0,
-          6
-        )}...${address.slice(-4)}`} for ${amount} APT`,
-        action: (
-          <a
-            href={`PLACEHOLDER: Insert the explorer URL here`}
-            target="_blank"
-          >
-            <ToastAction altText="View transaction">View txn</ToastAction>
-          </a>
-        ),
-      });
-    */
-
-    /* 
-      TODO #7: Set the isTxnInProgress prop to false
-    */
+   
       if (!address || !amount || !duration) { // what is date there is no date state variable a bit confusing ..
         console.error("Address, amount, or date is undefined");
         return;

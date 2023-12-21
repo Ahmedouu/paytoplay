@@ -76,19 +76,14 @@ export default function StreamRateIndicator() {
   // stream rate state
   const [streamRate, setStreamRate] = useState(0);
 
-  /* 
-    Calculates and sets the stream rate
-  */
+  
   useEffect(() => {
     calculateStreamRate().then((streamRate) => {
       setStreamRate(streamRate);
     });
   });
 
-  /*
-    Calculates the stream rate by adding up all of the streams the user is receiving and subtracting
-    all of the streams the user is sending.
-  */
+  
 
     const calculateStreamRate = async () => {
       try {
@@ -126,16 +121,11 @@ export default function StreamRateIndicator() {
   
 
     const getSenderStreams = async () => {
-      /*
-       TODO #2: Validate the account is defined before continuing. If not, return.
-     */
+      
        if (!account) {
         return;
       }
-      /*
-         TODO #3: Make a request to the view function `get_senders_streams` to retrieve the streams sent by 
-               the user.
-      */
+      
   
                const body = {
   
@@ -157,13 +147,7 @@ export default function StreamRateIndicator() {
                 }
             );
             const response= await res.json();   
-      /* 
-         TODO #4: Parse the response from the view request and create the streams array using the given 
-               data. Return the new streams array.
-   
-         HINT:
-          - Remember to convert the amount to floating point number
-      */    
+     
         const streams = response[0].map((recipient: any, i: any) => {
         const startTimestampMilliseconds = parseInt(response[1][i]) * 1000;
         const durationMilliseconds = parseInt(response[2][i]) * 1000;
@@ -202,9 +186,7 @@ export default function StreamRateIndicator() {
     }
     };
   const getReceiverStreams = async () => {
-    /*
-      TODO #5: Validate the account is defined before continuing. If not, return.
-    */
+    
       if (!account) {
         return;
     }
@@ -216,10 +198,7 @@ export default function StreamRateIndicator() {
           arguments: [account.address],
           };
     
-    /*
-      TODO #6: Make a request to the view function `get_receivers_streams` to retrieve the streams sent by 
-            the user.
-    */      
+          
      
             try {
               const res = await fetch(
@@ -234,13 +213,7 @@ export default function StreamRateIndicator() {
                   }
               );
               const response= await res.json();   
-        /* 
-           TODO #4: Parse the response from the view request and create the streams array using the given 
-                 data. Return the new streams array.
-     
-           HINT:
-            - Remember to convert the amount to floating point number
-        */    
+        
           const streams : Stream[] = response[0].map((sender: any, i: any) => {
           const startTimestampMilliseconds = parseInt(response[1][i]) * 1000;
           const durationMilliseconds = parseInt(response[2][i]) * 1000;
@@ -295,7 +268,7 @@ export default function StreamRateIndicator() {
               className={
                 "font-matter " +
                 (streamRate > 0
-                  ? "text-green-400"
+                  ? "text-purple-400"
                   : streamRate < 0
                   ? "text-red-400"
                   : "")
