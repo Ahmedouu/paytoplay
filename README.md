@@ -128,4 +128,4 @@ In this contract, the admin/module deployer is used to store all of the module's
 3. Run yarn dev or npm run dev to start the development server
 4. Open http://localhost:3000 with your browser to see the result
 
-The DAPP will walk you through how to use it, but the main thing to remember here is that you need a wallet (Martian or Petra) and at least two different accounts, create payments, receive payements and enjoy :)
+The DAPP will walk you through how to use it, but the main thing to remember here is that you need a wallet (Martian or Petra) and at least two different accounts, create a payment stream between two accounts, accept payments, cancel payments, claim payments, view your payment history, keep watching your stream rate and enjoy :)

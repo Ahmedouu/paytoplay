@@ -20,19 +20,19 @@ export default function Home() {
     <div className="max-w-5xl w-full px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="flex flex-col space-y-8">
-          <h1 className="text-6xl font-extrabold text-purple-800">Instant Money Flow</h1>
+          <h1 className="text-6xl font-cal text-purple-800">Instant Money Flow</h1>
 
           <div className="max-w-md space-y-4">
             <div className="flex items-center space-x-4">
               <CheckIcon className="text-green-600 w-8 h-8" />
-              <p className="text-lg font-light text-gray-700">
+              <p className="text-4xl font-bold font-cal">
                 Seamlessly transact in real-time, cutting out the middleman.
               </p>
             </div>
 
             <div className="flex items-center space-x-4">
               <CheckIcon className="text-green-600 w-8 h-8" />
-              <p className="text-lg font-light text-gray-700">
+              <p className="text-4xl font-bold font-cal">
                 Earn at every tick of the clock, even as you catch some Z's.
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-lg font-semibold text-purple-600">Revolutionizing Digital Transactions</h2>
-        <p className="mt-4 text-4xl font-bold text-gray-800">
+        <p className="mt-4 text-4xl font-cal text-gray-800">
           Your earnings at your fingertips, instantly.
         </p>
         <p className="mt-6 text-lg leading-8 text-gray-700">
