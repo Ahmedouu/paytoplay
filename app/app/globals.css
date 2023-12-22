@@ -4,8 +4,8 @@
 
 html,
 body {
-  background: #0f1116;
-  color: #ffffff;
+  background: #110b3a;
+  color: #edecf0;
 
   @apply font-sans antialiased;
 }
