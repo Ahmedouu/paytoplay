@@ -75,28 +75,28 @@ export default function StreamCreator(props: {
  
   const startStream = async () => {
    
-      if (!address || !amount || !duration) { // what is date there is no date state variable a bit confusing ..
+      if (!address || !amount || !duration) { 
         console.error("Address, amount, or date is undefined");
         return;
       }
     
-      // TODO #2
+  
       const amountNumber = parseFloat(amount);
       if (isNaN(amountNumber) || amountNumber < 0) {
         console.error("Amount is not a number or is less than 0");
         return;
       }
     
-      // TODO #3
+
       props.setTxn(true);
     
-      // TODO #4
+    
       setAddress('');
       setAmount('1');
       setDuration('');
       console.log("this is the amount",amount)
-
-      // TODO #5
+      console.log("bismillah ")
+     
       const payload: Types.TransactionPayload = {
         
         function: `${process.env.MODULE_ADDRESS}::${process.env.MODULE_NAME}::create_stream`,
@@ -109,7 +109,7 @@ export default function StreamCreator(props: {
         type: "entry_function_payload",
       };
     
-      // TODO #6
+    
       try {
         const result = await signAndSubmitTransaction(payload);
       
@@ -129,7 +129,6 @@ export default function StreamCreator(props: {
         return;
       }
     
-      // TODO #7
       props.setTxn(false);
     };
 
