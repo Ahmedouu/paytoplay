@@ -14,7 +14,7 @@ module the_streamer::streamer {
 
 
     //==============================================================================================
-    // Error codes - DO NOT MODIFY
+    // Error codes 
     //==============================================================================================
     const ESenderCanNotBeReceiver: u64 = 1;
     const ENumberInvalid: u64 = 2;
@@ -24,7 +24,7 @@ module the_streamer::streamer {
     const ESignerIsNotSenderOrReceiver: u64 = 6;
 
     //==============================================================================================
-    // Module Structs - DO NOT MODIFY
+    // Module Structs 
     //==============================================================================================
     struct Stream has store {
         id: u64,
@@ -55,12 +55,7 @@ module the_streamer::streamer {
     }
 
     //==============================================================================================
-    // Event structs - DO NOT MODIFY
-    // 
-    // Note for dev (delete before deployment): 
-    //     - Use header comments for structs and line comments for struct fields
-    //     - Use PascalCase for struct names
-    //     - Start event description with "Event to be emitted when"
+    // Event structs, used to store event to be mapped in ModuleEvwntStore
     //==============================================================================================
 
     struct StreamCreateEvent has store, drop {
