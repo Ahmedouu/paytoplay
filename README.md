@@ -1,7 +1,7 @@
 # seamlessPayments
 
+A DApp powered by aptos, it aims to provide a seamless, transparent, and efficient platform for real-time financial transactions, offering users full control and visibility over their payment streams
 
-With Aptos payments, you can send and receive payments in real-time. Utilize your potential to the fullest extent by having access to your earnings as soon as you earn them.
 Claiming APT: As soon as a stream begins, the recipient has the freedom to claim the amount that has been streamed up to that point at any time they choose.
 
 Viewing stream rate: Users involved in sending or receiving streamed payments have the ability to monitor their current stream rate, which reflects their total stream rate, taking into account all incoming and outgoing payments.
