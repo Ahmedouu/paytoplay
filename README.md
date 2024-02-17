@@ -11,6 +11,11 @@ Managing streams: The platform equips users with comprehensive control over thei
 Viewing stream history: Users have the option to look back at the history of each individual stream they are involved in, whether they are sending or receiving.
 
 
+The .env includes a deployed contract address on the aptos testnetwork so you can skip this step to the next highlighted section if you want,  but if you would like to deploy it yourself and get familiar with move on aptos, here you go:  
+You need the aptos cli, you can use the following to install the cli:
+
+`https://aptos.dev/tools/aptos-cli/install-cli/`
+
 # Deploying the dapp locally:
 
 1. Navigate to the app directory
